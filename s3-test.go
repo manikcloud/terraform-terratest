@@ -9,7 +9,7 @@ import (
 func TestS3BucketModule(t *testing.T) {
     terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
         // Set the path to the Terraform code that will be tested.
-        TerraformDir: "../examples/aws-s3-bucket",
+        TerraformDir: ".",
     })
 
     // Clean up resources with "terraform destroy" at the end of the test.
