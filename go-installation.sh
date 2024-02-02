@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Determine the latest Go version
-LATEST_GO=$(curl -s https://golang.org/dl/ | grep -oP 'go[0-9]+\.[0-9]+\.[0-9]+.linux-amd64.tar.gz' | head -1)
+# Fetch the latest version of Go
+LATEST_GO=$(curl -s https://go.dev/dl/ | grep -oP 'go[0-9]+\.[0-9]+\.[0-9]+.linux-amd64.tar.gz' | head -1)
 
 # Download the latest Go version
 echo "Downloading $LATEST_GO..."
-wget https://golang.org/dl/$LATEST_GO
+curl -LO "https://go.dev/dl/$LATEST_GO"
 
 # Remove any previous Go installation
 sudo rm -rf /usr/local/go
@@ -31,5 +31,3 @@ echo 'export PATH=$PATH:$GOPATH/bin' >> ~/.bashrc
 
 # Apply .bashrc changes to the current session
 source ~/.bashrc
-
-echo "Go environment variables added to ~/.bashrc for future sessions."
